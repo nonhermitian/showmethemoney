@@ -55,9 +55,9 @@ FULLVERSION = VERSION
 if not ISRELEASED:
     FULLVERSION += '.dev'+str(MICRO)+git_short_hash()
 
-def write_version_py(filename='marz/version.py'):
+def write_version_py(filename='showmethemoney/version.py'):
     cnt = """\
-# THIS FILE IS GENERATED FROM MARZ SETUP.PY
+# THIS FILE IS GENERATED FROM showmethemoney SETUP.PY
 # pylint: disable=invalid-name, missing-module-docstring
 short_version = '%(version)s'
 version = '%(fullversion)s'
@@ -73,19 +73,19 @@ release = %(isrelease)s
 local_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 os.chdir(local_path)
 sys.path.insert(0, local_path)
-sys.path.insert(0, os.path.join(local_path, 'marz'))  # to retrive _version
+sys.path.insert(0, os.path.join(local_path, 'showmethemoney'))  # to retrive _version
 
 # always rewrite _version
-if os.path.exists('marz/version.py'):
-    os.remove('marz/version.py')
+if os.path.exists('showmethemoney/version.py'):
+    os.remove('showmethemoney/version.py')
 
 write_version_py()
 
 
 # Add command for running pylint from setup.py
 class PylintCommand(setuptools.Command):
-    """Run Pylint on all marz Python source files."""
-    description = 'Run Pylint on marz Python source files'
+    """Run Pylint on all showmethemoney Python source files."""
+    description = 'Run Pylint on showmethemoney Python source files'
     user_options = [
         # The format is (long option, short option, description).
         ('pylint-rcfile=', None, 'path to Pylint config file')]
@@ -106,7 +106,7 @@ class PylintCommand(setuptools.Command):
         command = ['pylint']
         if self.pylint_rcfile:
             command.append('--rcfile=%s' % self.pylint_rcfile)
-        command.append(os.getcwd()+"/marz")
+        command.append(os.getcwd()+"/showmethemoney")
         subprocess.run(command, stderr=subprocess.STDOUT, check=False)
 
 
@@ -126,12 +126,12 @@ class StyleCommand(setuptools.Command):
 
     def run(self):
         """Run command."""
-        command = 'pycodestyle --max-line-length=100 marz'
+        command = 'pycodestyle --max-line-length=100 showmethemoney'
         subprocess.run(command, shell=True, check=False, stderr=subprocess.STDOUT)
 
 
 setuptools.setup(
-    name='marz',
+    name='showmethemoney',
     version=VERSION,
     packages=PACKAGES,
     description=DESCRIPTION,
