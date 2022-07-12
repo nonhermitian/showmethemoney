@@ -42,4 +42,4 @@ returning
 15.494356116334012
 ```
 
-indicating that it costs roughly 15 USD to execute one QV circuit 4000 times.
+indicating that it costs roughly 15 USD to execute one QV circuit 4000 times.  The actual cost will vary someone depending on the computer on which the estimate is run, and the variability inherent in some of the stochastic compilation pieces.
